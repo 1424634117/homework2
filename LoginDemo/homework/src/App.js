@@ -34,15 +34,18 @@ function Login(){
       message.error('密码或用户名错误');
       setIsLogin(false);
     }*/
+  
+  //点击登陆时启用的函数，会向前端发送请求
     const Login = async(userName,password)=>{
       try {
+        //返回的请求，要读取token应为res.data.data.token，而不是res.data.token（这是没有定义的）!!!
         await axios({
           method: 'post',
           url: 'http://localhost:3001/login',
           data: {
             userName: userName,
             password: password
-          }}).then(res=>console.log(res.data.token));
+          }}).then(res=>console.log(res.data.data.token));
         message.success('登录成功');
         setIsLogin(true);
       } catch (error) {
@@ -84,6 +87,8 @@ function Register() {
   const [userName, setName] = useState(null);
   const [password, setPass] = useState(null);
   const [rePass, setRePass] = useState(null);
+
+  //点击注册启用的函数，确认密码rePass不会传给前端
   async function RegisterOk() {
     if (userName!==null && password!==null && password===rePass)
    {  
