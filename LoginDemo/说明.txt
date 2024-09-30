@@ -1,0 +1,5 @@
+列出主要工作的文件：
+react+antd的前端部分：./homework/src/App.js
+sequelize连接数据库，并实现查找与增添用户数据功能：./homework/src/databaseConnect/modules/findUser.cjs
+koa中间件+jwt返回token：./appMain.js
+其他文件是在学习过程中创建的，在打通前后端过程中核心功能整合到了上述三个文件中，但并未被删除，特此说明。
