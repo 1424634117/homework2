@@ -22,7 +22,7 @@ const sequelize = new Sequelize('userLogin', 'root', 'tan11xin', {
   const userLogin = require('./user.cjs')(sequelize, Sequelize);
  
 
-
+//登陆用函数
   async function findUserMo(userName, password) {
     const user = await userLogin.findOne({
       where: {
@@ -40,6 +40,7 @@ const sequelize = new Sequelize('userLogin', 'root', 'tan11xin', {
     }
   }
 
+//注册用函数
   async function createUser(userName, password) {
     const user = await userLogin.create({
       userName: userName,
@@ -49,6 +50,8 @@ const sequelize = new Sequelize('userLogin', 'root', 'tan11xin', {
     return user;
   }
 
+
+//登陆测试，user1应该显示登陆成功，user2应该显示错误
   findUserMo('user1', 'password1');
   findUserMo('user2', 'password55');
   //createUser('user101', 'password101');
