@@ -6,7 +6,7 @@ import { Route,Link,Routes,Navigate } from 'react-router-dom';
 import axios from 'axios';
 //const {findUserMo} = require('./databaseConnect/models/findUser.cjs');
 
-
+//在这个作业项目中，仅仅用了三个组件：app、loginin、register，其他组件未配置路由
 
 function App() {
   return (
