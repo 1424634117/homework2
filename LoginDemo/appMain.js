@@ -18,26 +18,18 @@ const Router = require('koa-router');
 const router = new Router();
 //import  *  as  jwt  from  'jsonwebtoken';
 const axios = require('axios');
-//import  *  as  jwt  from  'jsonwebtoken';
-//import App from './homework/src/App';
 
-
-//const App = require('./homework/src/App.js').default;
-/*const Register=require('./homework/src/App.js');
-const Login=require('./homework/src/App.js');;*/
-
-
-//import App from './homework/src/App';
 const  jwt  =  require('jsonwebtoken');
 //const token = require("./token.js");
 const {findUserMo,createUser} = require('./homework/src/databaseConnect/models/findUser.cjs');
 
-//const secretKey = "tanzhixin";
-//app.use(Static('./homework/src'));
-//const path = require('path');
+
 const secretKey = "tanzhixin";
-// 使用 koa-static 提供静态文件
-//app.use(Static(path.join(__dirname, 'homework')));
+
+
+
+//登陆路由，设置了跨域请求，以便于react前端能够传数据给后端
+//findUserMo是连接数据库写的函数，用于查找用户，找到返回该对象，找不到返回null
 router.post('/login', async (ctx) => {
   const { userName, password } = ctx.request.body;
   const user = await findUserMo(userName, password);
@@ -59,6 +51,8 @@ router.post('/login', async (ctx) => {
     throw new Error('用户名或密码错误');
   }
 });
+
+//注册路由，createUser函数是连接数据库创建用户的函数，其返回逻辑与登录一致
 router.post('/register', async (ctx) => {
   const { userName, password } = ctx.request.body;
   const user = await createUser(userName, password);
