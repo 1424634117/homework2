@@ -34,7 +34,8 @@ router.post('/login', async (ctx) => {
   const { userName, password } = ctx.request.body;
   const user = await findUserMo(userName, password);
   if (user) {
-    const token = sign({ username: user.username, password: user.password }, secretKey, { expiresIn: '10s' });
+    // FIXME: 我们一般不在 token 中存比较重要的信息哈，像是密码啥的是不放在token里的，因为token是可以被解析的
+    const token = sign({ username: user.username, password: user.password }, secretKey, { expiresIn: '10s' }); // FIXME: 这个时效有点太短了，一般是几个小时左右
     ctx.body = {
       data: {
         token,
